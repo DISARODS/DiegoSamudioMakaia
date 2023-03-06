@@ -160,3 +160,7 @@ const cajero = (platadentrodelcajero, usuario) => {
             const usuario = validacion();
             newUser = cajero(platadentrodelcajero, usuario);
         }
+        while(newUser == "no"){
+            window.alert(Retire la tarjeta)
+        }
+            
