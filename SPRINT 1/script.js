@@ -4,17 +4,9 @@ administrador, 2: cliente. Guardarla en un array de objetos. */
 window.alert("Bienvenido al banco no hay money , a continuacion encontrara el trabajo")
 const userList = [
     {
-        name: "Diego Samudio",
-        ID: 1000185568,
-        password: "12345",
-        userType: 1,
-    },
-
-    {
-        name: "Bartolomeo Fernandez",
-        ID: 123432524,
-        password: "12345",
-        userType: 2,
+        name: "Diego Samudio",ID: 1000185568,password: "12345",userType: 1,
+    },{
+        name: "Bartolomeo",ID: 123432524,password: "12345",userType: 2,
     }]
 
 /*Realizar un programa que al inicio solicite ingresar documento y 
@@ -39,6 +31,7 @@ const valid = () =>{
         });
         if (validation == true){
             window.alert("El usuario no existe o la contraseña es incorrecta. A continuacion vuelva a intentar");
+            console.log("Asi no era");
         };
     };
     return user;
@@ -51,28 +44,23 @@ denominación y el total general.*/
 
 let platadentrodelcajero = [
     {
-    cantidad: 0,
-    denominacion: 100000,
+    cantidad: 0,denominacion: 100000,
     },
 
     {
-    cantidad: 0,
-    denominacion: 50000,
+    cantidad: 0,denominacion: 50000,
     },
 
     {
-    cantidad: 0,
-    denominacion: 20000,
+    cantidad: 0,denominacion: 20000,
     },
 
     {
-    cantidad: 0,
-    denominacion: 10000,
+    cantidad: 0,denominacion: 10000,
     },
 
     {
-    cantidad: 0,
-    denominacion: 5000,
+    cantidad: 0,denominacion: 5000,
     }
 ];
 
