@@ -1,7 +1,7 @@
 /* Escribir una lista de usuarios con los siguientes datos: nombre, número 
 de documento, contraseña y tipo de usuario. El tipo de usuario será: 1: 
 administrador, 2: cliente. Guardarla en un array de objetos. */
-
+window.alert("Bienvenido al banco no hay money , a continuacion encontrara el trabajo")
 const userList = [
     {
         name: "Diego Samudio",
@@ -11,7 +11,7 @@ const userList = [
     },
 
     {
-        name: "Bartolomeo",
+        name: "Bartolomeo Fernandez",
         ID: 123432524,
         password: "12345",
         userType: 2,
@@ -22,7 +22,7 @@ contraseña, si el usuario no existe debe indicar que no existe y volver a
 preguntar usuario y contraseña, si el usuario es administrador, debe 
 permitir cargar el cajero de la siguiente manera:*/
 
-const validacion = () =>{
+const valid = () =>{
     
     let validation = true;
     let user = {};
@@ -31,14 +31,14 @@ const validacion = () =>{
         const identification = parseInt(prompt("Por favor, digite su ID:"));
         const passwordUser = prompt("Por favor, digite su contraseña:");
 
-        userList.forEach(element => {
-            if (element.ID == identification && element.password == passwordUser){
-                user = element;
+        userList.forEach(elemento => {
+            if (elemento.ID == identification && elemento.password == passwordUser){
+                user = elemento;
                 validation = false;
             }
         });
         if (validation == true){
-            alert("El usuario no existe o la contraseña es incorrecta. A continuacion vuelva a intentar");
+            window.alert("El usuario no existe o la contraseña es incorrecta. A continuacion vuelva a intentar");
         };
     };
     return user;
@@ -81,54 +81,57 @@ const cajero = (platadentrodelcajero, usuario) => {
     if(usuario.userType == 1){
 
         let sumtotal = 0;
-        platadentrodelcajero.forEach(element => {
+        platadentrodelcajero.forEach(elemento => {
 
-            element.cantidad += parseInt(prompt(" Usted es un administrador, ingrese la cantidad de billetes de " + element.denominacion + ": "));
-            const totalporden = element.cantidad * element.denominacion;
-            console.log("La suma de billetes de " + element.denominacion + " es " + totalporden + ". Y la cantidad de billetes: " + element.cantidad + ".");
+            elemento.cantidad += parseInt(prompt(" Usted es un administrador, ingrese la cantidad de billetes de " + elemento.denominacion + ": "));
+            const totalporden = elemento.cantidad * elemento.denominacion;
+            console.log("La suma de billetes de " + elemento.denominacion + " es " + totalporden + ". Y la cantidad de billetes: " + elemento.cantidad + ".");
             sumtotal += totalporden;
         });
         console.log("La suma total de billetes en el cajero es " + sumtotal + ".");
+        
     }
-
+        
     else if(usuario.userType == 2){
 
         let sumtotal = 0;
-        platadentrodelcajero.forEach(element => {
+        platadentrodelcajero.forEach(elemento => {
 
-            const totalporden = element.cantidad * element.denominacion;
+            const totalporden = elemento.cantidad * elemento.denominacion;
             sumtotal += totalporden;
         });
 
         if(sumtotal == 0){
             console.log("Cajero en mantenimiento, vuelva pronto.");
 
-        } else if(sumtotal > 0){
+        } 
+        
+        else if(sumtotal > 0){
             let cantidadpararetirar = parseInt(prompt("Ingrese la cantidad a retirar: "));
             console.log("La cantidad que el cliente quiere retirar es " + cantidadpararetirar + ".");
             
             if (cantidadpararetirar <= sumtotal){
 
                 let cantidadEntregar = 0;
-                platadentrodelcajero.forEach(element => {
-                    const billetes = Math.floor(cantidadpararetirar/element.denominacion);
+                platadentrodelcajero.forEach(elemento => {
+                    const billetes = Math.floor(cantidadpararetirar/elemento.denominacion);
                     
-                    if(billetes <= element.cantidad){
+                    if(billetes <= elemento.cantidad){
                         
-                        if(cantidadpararetirar >= element.denominacion * billetes){
-                            cantidadpararetirar -= element.denominacion * billetes;
-                            element.cantidad -= billetes;
-                            cantidadEntregar += element.denominacion * billetes;
-                            console.log("Se entregaron " + billetes + " de " + element.denominacion + ".");
+                        if(cantidadpararetirar >= elemento.denominacion * billetes){
+                            cantidadpararetirar -= elemento.denominacion * billetes;
+                            elemento.cantidad -= billetes;
+                            cantidadEntregar += elemento.denominacion * billetes;
+                            console.log("Se entregaron " + billetes + " de " + elemento.denominacion + ".");
                         }
                    
-                    } else if(billetes > element.cantidad){
+                    } else if(billetes > elemento.cantidad){
                         
-                        if(cantidadpararetirar >= element.denominacion * element.cantidad){
-                                console.log("Se entregaron " + element.cantidad + " de " + element.denominacion + ".");
-                                cantidadEntregar += element.denominacion * element.cantidad;
-                                cantidadpararetirar -= element.denominacion * element.cantidad;
-                                element.cantidad -= element.cantidad;
+                        if(cantidadpararetirar >= elemento.denominacion * elemento.cantidad){
+                                console.log("Se entregaron " + elemento.cantidad + " de " + elemento.denominacion + ".");
+                                cantidadEntregar += elemento.denominacion * elemento.cantidad;
+                                cantidadpararetirar -= elemento.denominacion * elemento.cantidad;
+                                elemento.cantidad -= elemento.cantidad;
                         }
                     }
                 })
@@ -136,31 +139,35 @@ const cajero = (platadentrodelcajero, usuario) => {
                 console.log("La cantidad que el cajero pudo entregar fue " + cantidadEntregar + " y le falto por entregar " + cantidadpararetirar + ".");
 
                 let dineroDisponible = 0;
-                platadentrodelcajero.forEach(element => {
+                platadentrodelcajero.forEach(elemento => {
                   
-                    const totalporden = element.cantidad * element.denominacion;
-                    console.log("La suma de billetes de " + element.denominacion + " restante en el cajero es " + totalporden + ". La cantidad restante de billetes: " + element.cantidad + ".");
+                    const totalporden = elemento.cantidad * elemento.denominacion;
+                    console.log("La suma de billetes de " + elemento.denominacion + " restante en el cajero es " + totalporden + ". La cantidad restante de billetes: " + elemento.cantidad + ".");
                     dineroDisponible += totalporden;
                 });
 
-            } else if (cantidadpararetirar > sumtotal){
+            } 
+            
+            else if (cantidadpararetirar > sumtotal){
                 console.log("El cajero cuenta fondos insuficientes para realizar el retiro.");
             }
         }
     }
 
-    const newUser = prompt("¿Quiere intentar una vez mas? (si o no): ");
-    return newUser
+    const nuevousuario = prompt("¿Quiere intentar una vez mas? (si o no): ");
+    return nuevousuario
 }
 
 /*Bucle de repetición.*/
 
-        let newUser = "si";
-        while(newUser == "si"){
-            const usuario = validacion();
-            newUser = cajero(platadentrodelcajero, usuario);
+        let nuevousuario = "si";
+        while(nuevousuario == "si"){
+            const usuario = valid();
+            nuevousuario = cajero(platadentrodelcajero, usuario);
         }
-        while(newUser == "no"){
-            window.alert(Retire la tarjeta)
+        while(nuevousuario == 'no'){
+            window.alert("Ya te puedes retirar, feliz dia");
+            window.alert("Si te decidiste vuelve a iniciar dale click en aceptar una vez mas.")
+            const usuario = valid();
+            nuevousuario = cajero(platadentrodelcajero, usuario);
         }
-            
